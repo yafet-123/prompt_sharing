@@ -1,5 +1,5 @@
 import React from 'react'
-// import Feed from "@/components/Feed";
+import Feed from "@/components/Feed";
 
 const Home = () => (
   <section className='w-full flex-center flex-col'>
@@ -14,6 +14,7 @@ const Home = () => (
     </p>
 
     
+    <Feed />
   </section>
 );
 
