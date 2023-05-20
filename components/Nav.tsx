@@ -6,18 +6,18 @@ import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
-  const { data: session } = useSession();
+  const { data: session } = useSession(); // this is for next-auth 
 
   const [providers, setProviders] = useState(null);
-  const [toggleDropdown, setToggleDropdown] = useState(false);
-
+  const [toggleDropdown, setToggleDropdown] = useState(false); // for mobile view
+  // the providers the get for this one we use google
   useEffect(() => {
     (async () => {
       const res = await getProviders();
       setProviders(res);
     })();
   }, []);
-
+  // session?.user bring the user if it is login
   return (
     <nav className='flex-between w-full mb-16 pt-3'>
       <Link href='/' className='flex gap-2 flex-center'>
@@ -56,6 +56,7 @@ const Nav = () => {
         ) : (
           <>
             {providers &&
+            // bring the providers then list them  in this particular example it is only one
               Object.values(providers).map((provider) => (
                 <button
                   type='button'
@@ -75,6 +76,7 @@ const Nav = () => {
       {/* Mobile Navigation */}
       <div className='sm:hidden flex relative'>
         {session?.user ? (
+          // in this particular example when we click the icon in this example the photo from google icon
           <div className='flex'>
             <Image
               src={session?.user.image}
