@@ -37,6 +37,8 @@ const Feed = () => {
     fetchPosts();
   }, []);
 
+  // this is to remove if we put any reqular expression like \ and other
+  // in this search it will not go to the database it search in the local or the data that came from server and search it
   const filterPrompts = (searchtext) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
     return allPosts.filter(
